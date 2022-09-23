@@ -1,0 +1,71 @@
+/* ===== Tabela =====*/
+
+table {
+  width: 100%;
+}
+
+.botao:hover {
+  background-color: #4f7da6;
+}
+
+.botao-pesquisar {
+  margin-left: 3vw;
+}
+
+/* ===== Filtro =====*/
+
+
+.texto {
+  margin-left: 3.5vw;
+}
+
+.filtro {
+  margin-right: 5vw;
+}
+
+
+/* ===== Coluna da tabela ===== */
+
+.mat-column-cdAcesso {
+  width: 8%;
+}
+
+.mat-column-nmServidor {
+  text-align: center;
+  width: 15%;
+
+}
+
+.mat-column-dsCargo {
+  text-align: center;
+
+}
+
+.mat-column-dsSecretaria {
+  width: 14%;
+  text-align: center;
+
+}
+
+.mat-column-nmRequisitante {
+  width: 16%;
+  text-align: center;
+
+}
+
+.mat-column-dtPedido {
+  text-align: center;
+  width: 10%;
+
+}
+
+
+.mat-column-dtConclusao {
+  text-align: center;
+
+}
+
+.mat-column-action {
+  text-align: end;
+
+}

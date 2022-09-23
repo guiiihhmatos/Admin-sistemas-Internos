@@ -1,0 +1,18 @@
+/* ===== Container =====*/
+
+.container__center
+{
+  min-height: 100vh;
+}
+
+.container__left
+{
+  width: 16vw;
+  background-color:  #265a88;
+}
+
+.container__right
+{
+  width: 84vw;
+  background-color: #FFFAFA;
+}

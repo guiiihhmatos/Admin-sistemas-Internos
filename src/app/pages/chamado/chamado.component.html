@@ -1,0 +1,158 @@
+<div class="mt-3 d-flex align-items-center justify-content-center">
+  <h4 style="width: 80%;">Chamado</h4>
+</div>
+
+<div class="d-flex flex-columnlign-items-center justify-content-center">
+  <div class="d-flex align-items-center justify-content-between shadow my-3 fundo-branco w-75">
+    <div class="d-flex flex-column ">
+
+      <h4 class="mt-3 texto">Selecione uma data</h4>
+
+      <div class="d-flex align-items-center mx-5 mb-3">
+
+        <mat-form-field appearance="fill" class="data-range-form">
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="01/01/2022" [formControl]="date1" readonly>
+            <input matEndDate placeholder="28/06/2022" [formControl]="date2" readonly>
+          </mat-date-range-input>
+
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+        <button class="botao botao-pesquisar" (click)="onRangeDate()">Procurar</button>
+
+      </div>
+
+
+
+    </div>
+
+
+    <div class="row d-flex align-items-center filtro">
+
+
+
+      <div class="col-5">
+        <select class="form-select" matInput (change)="applyFilter($any($event.target).value)">
+          <option value="true">Em Aberto</option>
+          <option value="false">Concluído</option>
+          <option value="" selected>Todos</option>
+        </select>
+      </div>
+
+      <div class="col-7">
+
+
+        <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Pesquisar..."
+          class="form-control">
+
+      </div>
+
+
+    </div>
+
+
+
+  </div>
+</div>
+<div class="container-fluid mt-5">
+  <div class="row align-items-center justify-content-center">
+
+    <div class="col-10 mb-5" *ngIf="verificador">
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+
+          <ng-container matColumnDef="cdChamado">
+            <th mat-header-cell *matHeaderCellDef>Nº Protocolo </th>
+            <td mat-cell *matCellDef="let element"> {{("0000" + element.cdChamado).slice(-4)}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nmSolicitante">
+            <th mat-header-cell *matHeaderCellDef> Solicitante </th>
+            <td mat-cell *matCellDef="let element"> {{element.nmSolicitante}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="dsEmail">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.dsEmail}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="dsTelefone">
+            <th mat-header-cell *matHeaderCellDef> Telefone </th>
+            <td mat-cell *matCellDef="let element"> {{element.dsTelefone}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nmSistema">
+            <th mat-header-cell *matHeaderCellDef> Sistema </th>
+            <td mat-cell *matCellDef="let element"> {{element.nmSistema}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="dtAbertura">
+            <th mat-header-cell *matHeaderCellDef> Data da Abertura </th>
+            <td mat-cell *matCellDef="let element"> {{element.dtAbertura | date: "dd/MM/yyyy"}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="dtConclusao">
+            <th mat-header-cell *matHeaderCellDef> Data da Conclusão </th>
+
+            <td mat-cell *matCellDef="let element">
+              <div *ngIf="element.dtConclusao != null; else datanula">
+                {{ element.dtConclusao | date: "dd/MM/yyyy" }}
+              </div>
+
+              <ng-template #datanula>
+                -
+              </ng-template>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef></th>
+
+            <td mat-cell *matCellDef="let element">
+              <div class="botao__div" style="padding-left: 80px;">
+                <button (click)="onEdit(element)" class="botao">
+                  {{ element.flAberto ? 'Editar' : 'Ver'}}
+                </button>
+              </div>
+
+            </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons
+          aria-label="Selecionar pagina de chamados">
+        </mat-paginator>
+      </div>
+
+    </div>
+
+    <div *ngIf="!verificador" class="col-6 text-center">
+
+      <mat-card class="mat-card">
+        Informações não encontradas de {{dataUS1 | date: "dd/MM/yyyy"}} até {{dataUS2 | date: "dd/MM/yyyy"}}
+      </mat-card>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="row">
+
+    <div class="col-3"></div>
+    <div class="col-3"></div>
+    <div class="col-3"></div>
+    <div class="col-3 text-center">
+      <button class="botao">
+        <a href="http://desis.pmsv.local/#/registrar-demanda" target="_blank" class="nav-link">Abrir chamado</a>
+      </button>
+    </div>
+  </div>
+</div>

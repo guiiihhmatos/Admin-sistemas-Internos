@@ -1,0 +1,473 @@
+<div class="container-fluid dashboard">
+
+
+  <div class="row justify-content-center align-items-center pt-3">
+    <div class="col-2 d-flex justify-content-around align-items-center">
+      <h2 class="color-primary">Dashboard</h2>
+
+    </div>
+
+    <div class="col-4 text-center d-flex align-items-center justify-content-center">
+      <div class="pesquisa d-flex pt-3 align-items-center justify-content-center">
+        <p><strong>{{dataUS1 | date : 'dd/MM/yyyy'}} - {{ dataUS2 | date : 'dd/MM/yyyy'}}</strong></p>
+
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="d-flex justify-content-around align-items-center mx-5 mb-3 filtro">
+
+        <mat-form-field appearance="fill" class="data-range-form pt-3">
+          <mat-label class="mat-label">Selecione uma data</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="01/01/2022" [formControl]="date1" readonly>
+            <input matEndDate placeholder="28/06/2022" [formControl]="date2" readonly>
+          </mat-date-range-input>
+
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+        <button class="botao botao-pesquisar" (click)="onRangeDate()">Procurar</button>
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="container-fluid d-flex justify-content-around  mt-3">
+    <div class="container-acessos container-info">
+
+      <div class="row acessos d-flex align-items-center">
+        <div class="col-4 text-center">
+          <h5 class="title title-acessos">Acessos</h5>
+        </div>
+      </div>
+
+      <div class="mt-2">
+
+        <div class="mt-4">
+          <div class="row text-center">
+            <div class="col">
+              <p>
+                Pendentes :
+              </p>
+            </div>
+
+            <div class="col">
+
+              <p>
+                {{ infos.acessosPendentes }}
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="row text-center">
+            <div class="col">
+
+              <p>
+                Concluídos :
+              </p>
+
+            </div>
+
+            <div class="col">
+
+              <p>
+                {{ infos.acessosConcluidos }}
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="row text-center">
+
+            <div class="col">
+
+              <p>
+                <strong>Total :</strong>
+              </p>
+            </div>
+
+            <div class="col">
+
+              <p>
+                <strong>{{ infos.acessosTotal }}</strong>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+        <div class="row justify-content-center" style="margin-top: 6vh;">
+          <div class="col-10 text-center top-3">
+            <h5 class="">Top 3 Secretarias</h5>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center mt-4">
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Secretarias</p> </strong>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Solicitações</p> </strong>
+          </div>
+
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center" *ngFor="let item of infos.acessosSecretaria">
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[0] }} </p>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[1] }} </p>
+          </div>
+
+        </div>
+
+        <div class="row justify-content-center" style="margin-top: 6vh;">
+          <div class="col-10 text-center top-3">
+            <h5 class="">Top 3 Solicitantes</h5>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center mt-4">
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Solicitantes</p> </strong>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Solicitações</p> </strong>
+          </div>
+
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center" *ngFor="let item of infos.acessosSolicitante">
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[0] }} </p>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[1] }} </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container-chamados container-info">
+
+      <div class="row chamados d-flex align-items-center">
+        <div class="col-5 text-center">
+          <h5 class="title title-chamados">Chamados</h5>
+        </div>
+      </div>
+
+      <div class="mt-4">
+
+        <div>
+
+          <div class="row text-center">
+            <div class="col">
+              <p>
+                Pendentes :
+              </p>
+            </div>
+
+            <div class="col">
+
+              <p>
+                {{ infos.chamadosPendentes }}
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="row text-center">
+            <div class="col">
+
+              <p>
+                Concluídos :
+              </p>
+
+            </div>
+
+            <div class="col">
+
+              <p>
+                {{ infos.chamadosConcluidos }}
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="row text-center">
+
+            <div class="col">
+
+              <p>
+                <strong>Total :</strong>
+              </p>
+            </div>
+
+            <div class="col">
+
+              <p>
+                <strong>{{ infos.chamadosTotal }}</strong>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+        <div class="row justify-content-center" style="margin-top: 6vh;">
+          <div class="col-10 text-center top-3">
+            <h5 class="">Top 3 Secretarias</h5>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center mt-4">
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Secretarias</p> </strong>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Solicitações</p> </strong>
+          </div>
+
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center" *ngFor="let item of infos.chamadosSecretaria">
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[0] }} </p>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[1] }} </p>
+          </div>
+
+        </div>
+
+        <div class="row justify-content-center" style="margin-top: 6vh;">
+          <div class="col-10 text-center top-3">
+            <h5 class="">Top 3 Solicitantes</h5>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center mt-4">
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Solicitantes</p> </strong>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Solicitações</p> </strong>
+          </div>
+
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center" *ngFor="let item of infos.chamadosSolicitante">
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[0] }} </p>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[1] }} </p>
+          </div>
+
+        </div>
+
+        <div class="row justify-content-center" style="margin-top: 6vh;">
+          <div class="col-10 text-center top-3">
+            <h5 class="">Top 3 tipos de chamado</h5>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center mt-4">
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Sistemas</p> </strong>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Solicitações</p> </strong>
+          </div>
+
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center" *ngFor="let item of infos.chamadosProblema">
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[0] }} </p>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[1] }} </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="container-visitas container-info">
+
+      <div class="row visitas d-flex align-items-center">
+        <div class="col-4 text-center">
+          <h5 class="title title-visita">Visitas</h5>
+        </div>
+      </div>
+
+      <div class="mt-4">
+
+        <div>
+
+          <div class="row text-center">
+            <div class="col">
+              <p>
+                Pendentes :
+              </p>
+            </div>
+
+            <div class="col">
+
+              <p>
+                {{ infos.visitasPendentes }}
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="row text-center">
+            <div class="col">
+
+              <p>
+                Concluídos :
+              </p>
+
+            </div>
+
+            <div class="col">
+
+              <p>
+                {{ infos.visitasConcluidas }}
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="row text-center">
+
+            <div class="col">
+
+              <p>
+                <strong>Total :</strong>
+              </p>
+            </div>
+
+            <div class="col">
+
+              <p>
+                <strong>{{ infos.visitasTotal }}</strong>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+        <div class="row justify-content-center" style="margin-top: 6vh;">
+          <div class="col-10 text-center top-3">
+            <h5 class="">Top 3 Secretarias</h5>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center mt-4">
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Secretarias</p> </strong>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Solicitações</p> </strong>
+          </div>
+
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center" *ngFor="let item of infos.visitasSecretaria">
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[0] }} </p>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[1] }} </p>
+          </div>
+
+        </div>
+
+        <div class="row justify-content-center" style="margin-top: 6vh;">
+          <div class="col-10 text-center top-3">
+            <h5 class="">Top 3 Solicitantes</h5>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center mt-4">
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Solicitantes</p> </strong>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <strong> <p style="text-align: center;">Solicitações</p> </strong>
+          </div>
+
+        </div>
+
+        <div class="d-flex justify-content-around align-items-center" *ngFor="let item of infos.visitasSolicitante">
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[0] }} </p>
+          </div>
+
+          <div class="paragrafo__dashboard">
+            <p style="text-align: center;"> {{ item[1] }} </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+table {
+  width: 100%;
+}
+
+.botao:hover {
+  background-color: #4f7da6;
+}
+
+.botao-procurar {
+  width: 12vw;
+  height: 5vh;
+  font-size: 20px;
+}
+
+.botao-pesquisar {
+  margin-left: 3vw;
+}
+
+.texto {
+  margin-left: 3.5vw;
+}
+
+.filtro {
+  margin-right: 5vw;
+}
+
+/* ===== Coluna da tabela ===== */
+
+.mat-column-cdVisita {
+  width: 8%;
+}
+
+.mat-column-nmSolicitante {
+  text-align: center;
+  width: 20%;
+
+}
+
+.mat-column-dsEmail {
+  text-align: center;
+  width: 20%;
+}
+
+.mat-column-secretaria {
+  text-align: center;
+  width: 10%;
+}
+
+.mat-column-dtSolicitacao {
+  width: 18%;
+  text-align: center;
+
+}
+
+.mat-column-dtConclusao {
+  text-align: center;
+  width: 10%;
+}
+
+.mat-column-action {
+  text-align: end;
+
+}

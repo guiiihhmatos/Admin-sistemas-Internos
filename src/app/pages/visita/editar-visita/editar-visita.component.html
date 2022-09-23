@@ -1,0 +1,110 @@
+<div class="container my-5 formulario w-75">
+
+  <h2 class="titulo"> Editar Visita </h2>
+
+  <div class="row align-items-center justify-content-center">
+    <div class="col-4 text-center">
+      <label class="form-label">Nº Protocolo</label>
+      <h5> {{visitaPassed.cdVisita}} </h5>
+    </div>
+
+    <div class="col-4 text-center">
+      <label class="form-label">Data de Solicitação </label>
+      <h5> {{visitaPassed.dtSolicitacao | date: "dd/MM/yyyy"}} </h5>
+    </div>
+
+    <div class="col-4 text-center">
+      <label class="form-label">Secretaria</label>
+      <h5> {{visitaPassed.secretaria.dsSecretaria}} </h5>
+    </div>
+
+  </div>
+
+  <div class="row align-items-center justify-content-center mt-5">
+
+
+    <div class="col-4 text-center">
+      <label class="form-label">Nome do solicitante</label>
+      <h5> {{visitaPassed.nmSolicitante}} </h5>
+    </div>
+
+    <div class="col-4 text-center">
+      <div *ngIf="visitaPassed.dtConclusao != null; else datanula">
+        <label class="form-label">Data de Conclusão</label>
+        <h5> {{visitaPassed.dtConclusao | date: "dd/MM/yyyy"}} </h5>
+      </div>
+
+
+      <ng-template #datanula>
+        <label class="form-label">Data de Conclusão</label>
+        <h5> - </h5>
+      </ng-template>
+    </div>
+
+    <div class="col-4 text-center">
+      <label class="form-label">Telefone</label>
+      <h5> {{visitaPassed.dsTelefone}} </h5>
+    </div>
+
+  </div>
+
+  <div class="row align-items-center justify-content-center mt-5">
+
+
+
+    <div class="col-4 text-center" *ngIf="!visitaPassed.flAberto">
+      <label class="form-label">Em aberto</label>
+      <h5> Não </h5>
+    </div>
+
+    <div class="col-4 text-center"  *ngIf="!visitaPassed.flAberto">
+
+      <label class="form-label">Descrição da Conclusão</label>
+      <h5> {{visitaPassed.dsConclusao }} </h5>
+
+    </div>
+
+  </div>
+
+  <div class="col-12 text-center mt-5">
+    <label class="form-label">Email</label>
+    <h5> {{visitaPassed.dsEmail}} </h5>
+  </div>
+
+  <form [formGroup]="visitaForm" *ngIf="visitaPassed.flAberto">
+
+
+    <div class="row align-items-center justify-content-around my-5">
+
+      <div class="col-1"></div>
+      <div class="col-4">
+        <div class="form-label">Descrição da Conclusão</div>
+        <textarea class="form-control" formControlName="dsConclusao"></textarea>
+      </div>
+
+      <div class="col-3"></div>
+      <div class="col-2">
+        <div class="form-label">Em aberto</div>
+        <select class="form-control" formControlName="flAberto">
+          <option value="true">Sim</option>
+          <option value="false">Não</option>
+        </select>
+      </div>
+      <div class="col-2"></div>
+
+    </div>
+
+
+  </form>
+
+  <div class="row my-5">
+    <div class="col-12 text-center" *ngIf="visitaPassed.flAberto">
+      <button class="botao" (click)="onEdit(visitaForm.value, visitaPassed.cdVisita)">Editar</button>
+    </div>
+
+    <div class="col-12 text-center" *ngIf="!visitaPassed.flAberto">
+      <button class="botao" (click)="onBack()">Voltar</button>
+    </div>
+  </div>
+</div>
+

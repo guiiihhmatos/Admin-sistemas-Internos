@@ -1,0 +1,114 @@
+<div class="container my-5 formulario w-75">
+
+  <h2 class="titulo"> Editar Chamado </h2>
+
+  <div class="row align-items-center justify-content-center">
+    <div class="col-4 text-center">
+      <label class="form-label">Nº Protocolo</label>
+      <h5> {{chamadoPassed.cdChamado}} </h5>
+    </div>
+
+    <div class="col-4 text-center">
+      <label class="form-label">Descrição do chamado</label>
+      <h5> {{chamadoPassed.dsChamado}} </h5>
+    </div>
+
+    <div class="col-4 text-center">
+      <label class="form-label">Sistema</label>
+      <h5> {{chamadoPassed.nmSistema}} </h5>
+    </div>
+
+  </div>
+
+  <div class="row align-items-center justify-content-center mt-5">
+
+    <div class="col-4 text-center">
+      <label class="form-label">Data de Abertura </label>
+      <h5> {{chamadoPassed.dtAbertura | date: "dd/MM/yyyy"}} </h5>
+    </div>
+
+    <div class="col-4 text-center">
+      <label class="form-label">Nome do solicitante</label>
+      <h5> {{chamadoPassed.nmSolicitante}} </h5>
+    </div>
+
+    <div class="col-4 text-center">
+      <label class="form-label">Telefone</label>
+      <h5> {{chamadoPassed.dsTelefone}} </h5>
+    </div>
+
+  </div>
+
+  <div class="row align-items-center justify-content-center mt-5">
+
+    <div class="col-4 text-center">
+      <div *ngIf="chamadoPassed.dtConclusao != null; else datanula">
+        <label class="form-label">Data de Conclusão</label>
+        <h5> {{chamadoPassed.dtConclusao | date: "dd/MM/yyyy"}} </h5>
+      </div>
+
+
+      <ng-template #datanula>
+        <label class="form-label">Data de Conclusão</label>
+        <h5> - </h5>
+      </ng-template>
+    </div>
+
+    <div class="col-4 text-center" *ngIf="!chamadoPassed.flAberto">
+      <label class="form-label">Em aberto</label>
+      <h5> Não </h5>
+    </div>
+
+    <div class="col-4 text-center"  *ngIf="!chamadoPassed.flAberto">
+
+      <label class="form-label">Descrição da Conclusão</label>
+      <h5> {{chamadoPassed.dsConclusao }} </h5>
+
+    </div>
+
+  </div>
+
+  <div class="col-12 text-center mt-5">
+    <label class="form-label">Email</label>
+    <h5> {{chamadoPassed.dsEmail}} </h5>
+  </div>
+
+  <form [formGroup]="chamadoForm" *ngIf="chamadoPassed.flAberto">
+
+
+    <div class="row align-items-center justify-content-around my-5">
+
+      <div class="col-1"></div>
+      <div class="col-4">
+        <div class="form-label">Descrição da Conclusão</div>
+        <textarea class="form-control" formControlName="dsConclusao"></textarea>
+      </div>
+
+      <div class="col-3"></div>
+      <div class="col-2">
+        <div class="form-label">Em aberto</div>
+        <select class="form-control" formControlName="flAberto">
+          <option value="true">Sim</option>
+          <option value="false">Não</option>
+        </select>
+      </div>
+      <div class="col-2"></div>
+
+    </div>
+
+
+  </form>
+
+ 
+
+  <div class="row my-5">
+    <div class="col-12 text-center" *ngIf="chamadoPassed.flAberto">
+      <button class="botao" (click)="onEdit(chamadoForm.value, chamadoPassed.cdChamado)">Editar</button>
+    </div>
+
+    <div class="col-12 text-center" *ngIf="!chamadoPassed.flAberto">
+      <button class="botao" (click)="onBack()">Voltar</button>
+    </div>
+  </div>
+</div>
+

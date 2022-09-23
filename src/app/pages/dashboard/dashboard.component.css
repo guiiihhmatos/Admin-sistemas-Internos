@@ -1,0 +1,98 @@
+.dashboard {
+
+  width: 96%;
+  height: 96%;
+}
+
+.title {
+  color: white;
+}
+
+.title::after {
+  content: '';
+  display: block;
+  width: 2vw;
+  height: 0.2vw;
+  background-color: white;
+  margin-left: 1.9vw;
+}
+
+.title-acessos::after {
+  margin-left: 1.5vw;
+}
+
+
+/* ===== filtro ===== */
+
+.filtro {
+  background-color: white;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 3px 1px rgba(50, 50, 50, 0.47);
+  -moz-box-shadow: 3px 3px 3px 1px rgba(50, 50, 50, 0.47);
+  box-shadow: 3px 3px 3px 1px rgba(50, 50, 50, 0.47);
+}
+
+/* container-info */
+
+.container-info {
+  background-color: white;
+  width: 24vw;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 3px 1px rgba(50, 50, 50, 0.47);
+  -moz-box-shadow: 3px 3px 3px 1px rgba(50, 50, 50, 0.47);
+  box-shadow: 3px 3px 3px 1px rgba(50, 50, 50, 0.47);
+
+  margin-bottom: 5vh;
+}
+
+
+.pesquisa {
+  background-color: white;
+  width: 18vw;
+  height: 6vh;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 3px 1px rgba(50, 50, 50, 0.47);
+  -moz-box-shadow: 3px 3px 3px 1px rgba(50, 50, 50, 0.47);
+  box-shadow: 3px 3px 3px 1px rgba(50, 50, 50, 0.47);
+}
+
+.top-3 {
+  background-color: #265a88;
+  color: white;
+}
+
+.acessos,
+.chamados,
+.visitas {
+  border-radius: 10px 10px 0 0;
+  background-color: #265a88;
+  margin: 0 auto;
+  height: 6vh;
+}
+
+.chamado-tipo {
+  margin-right: 1.5vw;
+}
+
+.paragrafo__dashboard
+{
+  width: 30%;
+}
+
+/* ===== media screen resolução 1366 ===== */
+
+@media only screen and (max-width: 1366px) {
+  .title-visita::after {
+    margin-left: 1vw;
+  }
+
+  .title-chamados::after {
+    margin-left: 0.6vw;
+  }
+
+  .title-acessos::after {
+    margin-left: 0.4vw;
+  }
+
+
+}

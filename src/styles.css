@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+/* ===== botão padrão =====*/
+
+.botao {
+  height: 4vh;
+  width: 8vw;
+  background-color: #265a88;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+/* ===== cor principal =====*/
+
+.color-primary {
+  color: #265a88;
+}
+
+/* ===== fundo branco =====*/
+
+.fundo-branco {
+  background-color: white;
+}
+
+/* ===== error ===== */
+
+.mat-card
+{
+  color: #ff0000;
+}

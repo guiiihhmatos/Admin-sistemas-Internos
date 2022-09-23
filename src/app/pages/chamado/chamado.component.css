@@ -1,0 +1,71 @@
+table
+{
+  width: 100%;
+}
+
+.botao:hover {
+  background-color: #4f7da6;
+}
+
+.botao-procurar {
+  width: 12vw;
+  height: 5vh;
+  font-size: 20px;
+}
+
+.botao-pesquisar {
+  margin-left: 3vw;
+}
+
+.texto {
+  margin-left: 3.5vw;
+}
+
+.filtro {
+  margin-right: 5vw;
+}
+
+
+
+/* ===== Coluna da tabela ===== */
+
+.mat-column-cdChamado {
+  width: 1%;
+}
+
+.mat-column-nmSolicitante {
+  text-align: center;
+
+}
+
+.mat-column-dsEmail {
+  text-align: center;
+  width: 18%;
+}
+
+.mat-column-dsTelefone {
+  text-align: center;
+
+}
+
+.mat-column-nmSistema { 
+  width: 18%;
+  text-align: center;
+
+}
+
+.mat-column-dtAbertura {
+  text-align: center;
+  width: 10%;
+}
+
+
+.mat-column-dtConclusao {
+  text-align: center;
+  width: 10%;
+}
+
+.mat-column-action {
+  text-align: end;
+
+}

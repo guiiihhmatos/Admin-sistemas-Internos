@@ -1,0 +1,145 @@
+<div class="container my-5 formulario w-75">
+
+  <h2 class="titulo"> Editar Acesso </h2>
+
+  <div class="row align-items-center justify-content-center">
+    <div class="col-4 text-center">
+      <label class="form-label">Nº Protocolo</label>
+      <h5> {{acessoPassed.cdAcesso}} </h5>
+    </div>
+
+    <div class="col-4 text-center">
+      <label class="form-label">Nome</label>
+      <h5> {{acessoPassed.nmServidor}} </h5>
+    </div>
+
+    <div class="col-4 text-center">
+      <label class="form-label">Chapa do Servidor</label>
+      <h5> {{acessoPassed.cdServidor}} </h5>
+    </div>
+
+  </div>
+
+  <div class="row align-items-center justify-content-center mt-5">
+
+
+    <div class="col-4 text-center">
+      <label class="form-label">Cargo</label>
+      <h5> {{acessoPassed.dsCargo}} </h5>
+    </div>
+
+    <div class="col-4 text-center">
+      <label class="form-label">Requisitante</label>
+      <h5> {{acessoPassed.nmRequisitante}} </h5>
+    </div>
+
+    <div class="col-4 text-center">
+      <label class="form-label">Equivalente</label>
+      <h5> {{acessoPassed.dsEquivalente}} </h5>
+    </div>
+
+  </div>
+
+  <div class="row align-items-center justify-content-center mt-5">
+
+
+    <div class="col-4 text-center">
+      <label class="form-label">Secretaria</label>
+      <h5> {{acessoPassed.secretaria.dsSecretaria}} </h5>
+    </div>
+
+    <div class="col-4 text-center">
+      <label class="form-label">Data do Pedido</label>
+      <h5> {{acessoPassed.dtPedido | date: "dd/MM/yyyy"}} </h5>
+    </div>
+
+
+    <div class="col-4 text-center" *ngIf="!acessoPassed.flAberto">
+      <label class="form-label">Em aberto</label>
+      <h5> Não </h5>
+    </div>
+
+  </div>
+
+  <div class="row justify-content-center mt-5">
+
+
+    <div class="col-4 flex-column text-center d-flex align-items-center ">
+      <h5 class="form-label">Descrição do Sistema</h5>
+      <button class="botao botao-desc my-3" (click)="onDescSistema()">{{ verificador ? '+' : '-' }}</button>
+      <div *ngIf="!verificador" class="d-flex justify-content-around align-items-center">
+        <div class="lista">
+          <li *ngFor="let item of acessoPassed.dsSistema">
+            {{ item }}
+          </li>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 text-center">
+      <div *ngIf="acessoPassed.dtConclusao != null; else datanula">
+        <label class="form-label">Data de Conclusão</label>
+        <h5> {{acessoPassed.dtConclusao | date: "dd/MM/yyyy"}} </h5>
+      </div>
+
+
+      <ng-template #datanula>
+        <label class="form-label">Data de Conclusão</label>
+        <h5> - </h5>
+      </ng-template>
+    </div>
+
+    <div class="col-4 text-center" *ngIf="!acessoPassed.flAberto">
+
+      <label class="form-label">Descrição da Conclusão</label>
+      <h5> {{acessoPassed.dsConclusao}} </h5>
+
+    </div>
+
+
+  </div>
+
+  <div class="col-12 text-center">
+    <label class="form-label">Email</label>
+    <p> <strong>{{acessoPassed.dsEmail}}</strong> </p>
+  </div>
+
+  <form [formGroup]="acessoForm" *ngIf="acessoPassed.flAberto">
+
+
+    <div class="row align-items-center justify-content-around my-5">
+
+      <div class="col-1"></div>
+      <div class="col-4">
+        <div class="form-label">Descrição da Conclusão</div>
+        <textarea class="form-control" formControlName="dsConclusao"></textarea>
+      </div>
+
+      <div class="col-3"></div>
+      <div class="col-2">
+        <div class="form-label">Em aberto</div>
+        <select class="form-control" formControlName="flAberto">
+          <option value="true">Sim</option>
+          <option value="false">Não</option>
+        </select>
+      </div>
+      <div class="col-2"></div>
+
+    </div>
+
+
+  </form>
+
+
+
+
+  <div class="row my-5">
+    <div class="col-12 text-center" *ngIf="acessoPassed.flAberto">
+      <button class="botao" (click)="onEdit(acessoForm.value, acessoPassed.cdAcesso)">Editar</button>
+    </div>
+
+    <div class="col-12 text-center" *ngIf="!acessoPassed.flAberto">
+      <button class="botao" (click)="onBack()">Voltar</button>
+    </div>
+  </div>
+</div>

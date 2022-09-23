@@ -1,0 +1,20 @@
+.formulario
+{
+  background-color: #f5f5f5;
+  padding-bottom: 20px;
+}
+
+.titulo
+{
+  padding: 30px;
+}
+
+.lista
+{
+  list-style: none;
+}
+
+.botao-desc
+{
+  width: 2vw;
+}
